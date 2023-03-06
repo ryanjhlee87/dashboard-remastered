@@ -4,7 +4,11 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
 
-// User data
+import generalRoutes from './routes/generalRoutes.js';
+import userRoutes from './routes/userRoutes.js';
+import saleRoutes from './routes/saleRoutes.js';
+
+// Initial data insertion purpose only
 import User from './models/UserList.js';
 import UserAge from './models/UserAge.js';
 import SalesByMonth from './models/SalesByMonth.js';
@@ -22,7 +26,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
-app.use('/', (req, res) => res.send('Hello World! from backend'));
+app.use('/', generalRoutes);
+app.use('/user', userRoutes);
+app.use('/sales', saleRoutes);
 
 const mongoURL = process.env.MONGO_URL;
 const PORT = process.env.PORT || 5000;
