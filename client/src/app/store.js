@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { userApi } from '../services/user';
-import themeSlice from '../features/themeSlice';
+import layoutSlice from '../features/layoutSlice';
 
 export const store = configureStore({
   reducer: {
-    theme: themeSlice,
+    layout: layoutSlice,
     [userApi.reducerPath]: userApi.reducer,
   },
 
